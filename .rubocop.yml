@@ -1,0 +1,10 @@
+AllCops:
+  NewCops: enable
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+# Add more RuboCop rules as needed

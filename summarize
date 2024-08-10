@@ -1,0 +1,3 @@
+#! /bin/bash
+
+llm -s "summarize the following text into 3 consise bullet points, add a bold title to the summary"
