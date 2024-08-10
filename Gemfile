@@ -14,3 +14,5 @@ gem 'rubocop', require: false
 gem 'sinatra', '~> 3.1'
 gem 'sinatra-activerecord', '~> 2.0'
 gem 'sqlite3', '~> 1.6'
+
+gem "rake", "~> 13.2"

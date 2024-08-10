@@ -4,7 +4,7 @@
 #
 
 app = 'unbiased-api'
-primary_region = 'ewr'
+primary_region = 'ewr'fly 
 
 [build]
 
@@ -20,3 +20,8 @@ primary_region = 'ewr'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+[mounts]
+  source = "sqlite_data"
+  destination = "/data"
+  initial_size = "1gb" # optional - the size of the volume created on first deploy

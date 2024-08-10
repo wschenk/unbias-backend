@@ -8,6 +8,11 @@ require_relative 'models/llm'
 require 'jwt'
 require 'clerk'
 
+if ENV['APP_ENV'] == 'production' && ENV['RUNNING_MIGRATIONS'] != 'true'
+  ENV['RUNNING_MIGRATIONS'] = 'true'
+  puts 'Running migrate'
+  system('bundle exec rake db:migrate')
+end
 # For cookies
 use Rack::Session::Cookie, key: 'rack.session',
                            path: '/',

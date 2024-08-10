@@ -18,7 +18,7 @@ RUN bundle install --without development
 RUN useradd ruby --home /app --shell /bin/bash
 RUN chown -R ruby:ruby /app
 USER ruby:ruby
-
+ENV APP_ENV=production
 RUN pipx install html2text && pipx install llm
 ENV PATH="/app/.local/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 # Copy application code
