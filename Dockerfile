@@ -12,7 +12,10 @@ RUN gem update --system --no-document && \
     # Rack app lives here
 WORKDIR /app
 
-RUN python3 -m venv /opt/venv
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 COPY requirements.txt .
 RUN /opt/venv/bin/pip install -r requirements.txt
 
@@ -23,8 +26,9 @@ RUN bundle install --without development
 RUN useradd ruby --home /app --shell /bin/bash
 RUN chown -R ruby:ruby /app
 USER ruby:ruby
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 ENV APP_ENV=production
-ENV PATH="/opt/venv/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 # Copy application code
 COPY --chown=ruby:ruby . .
 
